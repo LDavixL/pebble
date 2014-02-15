@@ -1,5 +1,12 @@
 #include <pebble.h>
 
+void pbl_main(AppTaskContextRef app_task_ctx) {
+	graphics_context_set_fill_color(app_task_ctx, GColorBlack);
+	graphics_draw_circle(app_task_ctx, GPoint(10, 10), 10);
+	app_event_loop();
+}
+
+/*
 static Window *window;
 
 static TextLayer *temperature_layer;
@@ -105,3 +112,4 @@ int main(void) {
   app_event_loop();
   deinit();
 }
+*/
