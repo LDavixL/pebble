@@ -4,12 +4,21 @@ Animation *animation;
 Window *window;
 TextLayer *text_layer;
 
+void update(Animation *animation, const uint32_t time) {
+}
+
 void handle_init(void) {
 	// Create a window and text layer
 	window = window_create();
 
 	animation = animation_create();
 	animation_set_duration(animation, ANIMATION_DURATION_INFINITE);
+	const AnimationImplementation implementation = {
+		.setup = NULL,
+		.update = update,
+		.teardown = NULL
+	};
+	animation_set_implementation(animation, &implementation);
 	animation_schedule(animation);
 
 	// Push the window
