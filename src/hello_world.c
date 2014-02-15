@@ -24,6 +24,9 @@ void handle_init(void) {
 	window_stack_push(window, true);
 }
 
+AnimationStartedHandler handler {
+}
+
 void handle_deinit(void) {
 	// Destroy the text layer
 	text_layer_destroy(text_layer);
