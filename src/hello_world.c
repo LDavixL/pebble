@@ -9,7 +9,7 @@ void handle_init(void) {
 	window = window_create();
 
 	animation = animation_create();
-	animation_set_duration(ANIMATION_DURATION_INFINITE);
+	animation_set_duration(animation, ANIMATION_DURATION_INFINITE);
 	animation_schedule(animation);
 
 	// Push the window
