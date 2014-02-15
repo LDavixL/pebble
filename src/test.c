@@ -12,7 +12,7 @@ void deinit(void) {
 	window_destroy(window);
 }
 
-void main(void) {
+int main(void) {
 	init();
 	app_event_loop();
 	deinit();
