@@ -13,17 +13,17 @@ static void in_received_handler(DictionaryIterator *iter, void *context) {
 	Tuple *article_tuple = dict_find(iter, WIKI_KEY_ARTICLE);
 	
 	if (article_tuple) {
-		Layer *window_layer = window_get_root_layer(window);
-		GSize size = layer_get_bounds(window_layer).size;
 		text_layer_set_text(article_layer, article_tuple->value->cstring);
-		
-		int16_t article_h = text_layer_get_content_size(article_layer).h;
-		
-		APP_LOG(APP_LOG_LEVEL_DEBUG, "article height %d", article_h);
-		
-		text_layer_set_size(article_layer, GSize(size.w, article_h));
-		scroll_layer_set_content_size(scroll_layer, GSize(size.w, 20 + article_h));
+	} else {
+		text_layer_set_text(article_layer, "Error: article not received.");
 	}
+	int16_t article_h = text_layer_get_content_size(article_layer).h;
+	
+	APP_LOG(APP_LOG_LEVEL_DEBUG, "article h %d", article_h);
+	
+	text_layer_set_size(article_layer, GSize(144, article_h));
+	scroll_layer_set_content_size(scroll_layer, GSize(144, 20 + article_h));
+	scroll_layer_set_click_config_onto_window(scroll_layer, window);
 }
 
 static void in_dropped_handler(AppMessageResult reason, void *context) {
@@ -39,20 +39,14 @@ static void app_message_init(void) {
 
 static void window_load(Window *window) {
 	Layer *window_layer = window_get_root_layer(window);
-	GSize size = layer_get_bounds(window_layer).size;
-	
-	APP_LOG(APP_LOG_LEVEL_DEBUG, "size %d %d", size.w, size.h);
 
-	title_layer = text_layer_create(GRect(0, 0, size.w, 20));
+	title_layer = text_layer_create(GRect(0, 0, 144, 20));
+	article_layer = text_layer_create(GRect(0, 20, 144, 10000));
+	scroll_layer = scroll_layer_create(GRect(0, 0, 144, 152));
+	scroll_layer_set_content_size(scroll_layer, GSize(144, 152));
+	
 	text_layer_set_text(title_layer, "Article of the Day:");
 	text_layer_set_text_alignment(title_layer, GTextAlignmentCenter);
-	
-	article_layer = text_layer_create(GRect(0, 20, size.w, 10 * size.h));
-	
-	scroll_layer = scroll_layer_create(GRect(0, 0, size.w, size.h));
-	
-	scroll_layer_set_content_size(scroll_layer, GSize(size.w, 10 * size.h));
-	scroll_layer_set_click_config_onto_window(scroll_layer, window);
 	
 	scroll_layer_add_child(scroll_layer, text_layer_get_layer(title_layer));
 	scroll_layer_add_child(scroll_layer, text_layer_get_layer(article_layer));
