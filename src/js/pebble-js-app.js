@@ -1,18 +1,17 @@
-function fetchArticle() {
+function fetchWiki() {
 	var response;
 	var req = new XMLHttpRequest();
-	// build the GET request
-	req.open('GET', "http://en.wikipedia.org/wiki/Special:FeedItem/potd/" + 20140216 + "000000/en", true);
+	req.open('GET', "http://en.wikipedia.org/wiki/Main_Page", true);
 	req.onload = function(e) {
 		if (req.readyState == 4) {
-			// 200 - HTTP OK
 			if(req.status == 200) {
 				response = req.responseText;
-				var title = /<span .*?<\/span>/.exec(response);
-				console.log(title);
-				//Pebble.sendAppMessage({
-				// "article": "$" + price.toString()});
-				
+				var article = /<p.*?p>/.exec(response)[0];
+				article = article.replace(/<(?:.|\n)*?>/gm, '');
+				article = article.replace('&#160;', ' ');
+				article = article.replace(' (Full&#160;article...)', '');
+				Pebble.sendAppMessage({
+					"article": article });
 			} else {
 				console.log("Request returned error code " + req.status.toString());
 			}
@@ -21,15 +20,4 @@ function fetchArticle() {
 	req.send(null);
 }
 
-Pebble.addEventListener("ready",
-						function(e) {
-							console.log("connect!" + e.ready);
-							console.log(e.type);
-						});
-
-Pebble.addEventListener("appmessage",
-						function(e) {
-							console.log("message");
-							fetchArticle();
-						});
-
+Pebble.addEventListener("ready", function(e) { fetchWiki(); });
