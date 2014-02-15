@@ -16,11 +16,10 @@ void handle_init(void) {
 	// Add the text layer to the window
 	layer_add_child(window_get_root_layer(window), text_layer_get_layer(text_layer));
 
+	struct Animation *animation = animation_create();
+
 	// Push the window
 	window_stack_push(window, true);
-
-	// App Logging!
-	APP_LOG(APP_LOG_LEVEL_DEBUG, "Just pushed a window!");
 }
 
 void handle_deinit(void) {
