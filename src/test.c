@@ -1,15 +1,14 @@
 #include <pebble.h>
 
 static Window *window = NULL;
-static Layer *root = NULL;
 static Animation *animation = NULL;
 
 void draw(Layer *layer, GContext *ctx) {
 	graphics_draw_circle(ctx, GPoint(0, 0), rand() % 100);
+	layer_mark_dirty(layer);
 }
 
 void update(Animation *animation, const uint32_t time) {
-	layer_mark_dirty(root);
 }
 
 static const AnimationImplementation implementation = {
@@ -28,8 +27,7 @@ void init(void) {
 	animation_set_implementation(animation, &implementation);
 	*/
 
-	root = window_get_root_layer(window);
-	layer_set_update_proc(root, draw);
+	layer_set_update_proc(window_get_root_layer(window), draw);
 }
 
 void deinit(void) {
