@@ -1,14 +1,17 @@
 {
-    "versionLabel": "1.0",
-    "uuid": "14e9b574-3057-4e0e-bd36-5d37408a9d75",
-    "appKeys": {},
-    "longName": "History",
+    "versionLabel": "1.0.0",
+    "uuid": "2a3352d5-2d44-437f-9652-98464640aeab",
+    "appKeys": {
+        "article": 1,
+        "title": 0
+    },
+    "longName": "Daily Articles",
     "versionCode": 1,
     "capabilities": [
         ""
     ],
-    "shortName": "History",
-    "companyName": "clin18",
+    "shortName": "Article",
+    "companyName": "polyNOMial",
     "watchapp": {
         "watchface": false
     },
