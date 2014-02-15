@@ -21,10 +21,12 @@ void init(void) {
 	window_set_background_color(window, GColorBlack);
 	window_stack_push(window, true);
 
+	/*
 	animation = animation_create();
 	animation_set_duration(animation, ANIMATION_DURATION_INFINITE);
 	animation_schedule(animation);
 	animation_set_implementation(animation, &implementation);
+	*/
 
 	root = window_get_root_layer(window);
 	layer_set_update_proc(root, draw);
