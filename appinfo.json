@@ -2,8 +2,10 @@
     "versionLabel": "1.0.0",
     "uuid": "2a3352d5-2d44-437f-9652-98464640aeab",
     "appKeys": {
-        "article": 1,
-        "title": 0
+        "article": 0,
+        "trivia": 2,
+        "history": 3,
+        "news": 1
     },
     "longName": "Wikipedia Main Page",
     "versionCode": 1,
