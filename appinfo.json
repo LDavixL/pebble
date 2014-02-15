@@ -1,13 +1,13 @@
 {
     "versionLabel": "1.0",
-    "uuid": "0142cb1d-cd41-4eb7-a41e-eb3d172ea20e",
+    "uuid": "14e9b574-3057-4e0e-bd36-5d37408a9d75",
     "appKeys": {},
-    "longName": "Test",
+    "longName": "History",
     "versionCode": 1,
     "capabilities": [
         ""
     ],
-    "shortName": "Test",
+    "shortName": "History",
     "companyName": "clin18",
     "watchapp": {
         "watchface": false
