@@ -9,6 +9,7 @@ void init(void) {
 	window_stack_push(window, true);
 
 	bitmap = bitmap_layer_create(GRect(0, 0, 20, 20));
+	bitmap_layer_set_background_color(bitmap, GColorWhite);
 }
 
 void deinit(void) {
