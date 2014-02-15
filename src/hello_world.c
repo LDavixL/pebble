@@ -5,11 +5,17 @@ Window *window;
 TextLayer *text_layer;
 
 void update(Animation *animation, const uint32_t time) {
+	GRect frame = {
+	};
+	bitmap_layer_create(frame);
 }
 
-void handle_init(void) {
-	// Create a window and text layer
+void init(void) {
+	srand(time(NULL));
+
 	window = window_create();
+	window_set_background_color(window, GColorBlack);
+	window_stack_push(window, true);
 
 	animation = animation_create();
 	animation_set_duration(animation, ANIMATION_DURATION_INFINITE);
@@ -20,23 +26,15 @@ void handle_init(void) {
 	};
 	animation_set_implementation(animation, &implementation);
 	animation_schedule(animation);
-
-	// Push the window
-	window_stack_push(window, true);
 }
 
-void handle_deinit(void) {
-	// Destroy the text layer
-	text_layer_destroy(text_layer);
-
+void deinit(void) {
 	animation_destroy(animation);
-
-	// Destroy the window
 	window_destroy(window);
 }
 
 int main(void) {
-	handle_init();
+	init();
 	app_event_loop();
-	handle_deinit();
+	deinit();
 }
