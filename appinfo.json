@@ -2,19 +2,27 @@
     "versionLabel": "1.0.0",
     "uuid": "2a3352d5-2d44-437f-9652-98464640aeab",
     "appKeys": {
-        "article": 0
+        "article": 1,
+        "title": 0
     },
-    "longName": "Daily Articles",
+    "longName": "Wikipedia Main Page",
     "versionCode": 1,
     "capabilities": [
         ""
     ],
-    "shortName": "Article",
+    "shortName": "Wiki Main",
     "companyName": "polyNOMial",
     "watchapp": {
         "watchface": false
     },
     "resources": {
-        "media": []
+        "media": [
+            {
+                "menuIcon": true,
+                "type": "png",
+                "name": "FAVICON",
+                "file": "images/wikipediafav.png"
+            }
+        ]
     }
 }
