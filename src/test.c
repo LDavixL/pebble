@@ -5,7 +5,6 @@ static Animation *animation = NULL;
 
 void draw(Layer *layer, GContext *ctx) {
 	graphics_draw_circle(ctx, GPoint(0, 0), rand() % 100);
-	layer_mark_dirty(layer);
 }
 
 void update(Animation *animation, const uint32_t time) {
@@ -20,10 +19,10 @@ void init(void) {
 	window_set_background_color(window, GColorBlack);
 	window_stack_push(window, true);
 
-	/*
 	animation = animation_create();
 	animation_set_duration(animation, ANIMATION_DURATION_INFINITE);
 	animation_schedule(animation);
+	/*
 	animation_set_implementation(animation, &implementation);
 	*/
 
