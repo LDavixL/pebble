@@ -3,7 +3,7 @@
 
 void init(void) {
 	Window *window = window_create();
-	window_set_background_color(window, GColorWhite);
+	window_set_background_color(window, GColorBlack);
 	window_stack_push(window, true);
 }
 
