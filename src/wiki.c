@@ -41,11 +41,7 @@ static void in_received_handler(DictionaryIterator *iter, void *context) {
 	text_layer_set_text(title_layer, titles[section_tuple->key]);
 	text_layer_set_text(section_layer, section_tuple->value->cstring);
 	int16_t h = text_layer_get_content_size(section_layer).h;
-	scroll_layer_set_content_size(scroll_layer, GSize(144, 20 + h));
-}
-
-static void in_dropped_handler(AppMessageResult reason, void *context) {
-  APP_LOG(APP_LOG_LEVEL_DEBUG, "App Message Dropped!");
+	scroll_layer_set_content_size(scroll_layer, GSize(144, 22 + h));
 }
 
 void select(int index, void *context) {
@@ -55,14 +51,14 @@ void select(int index, void *context) {
 	if (iter == NULL) return;
 	dict_write_tuplet(iter, &tuple);
 	dict_write_end(iter);
-	app_message_outbox_send();
 	window_stack_push(subwindow, true);
 	scroll_layer_set_content_offset(scroll_layer, GPointZero, false);
+	text_layer_set_text(title_layer, "Loading...");
+	app_message_outbox_send();
 }
 
 static void app_message_init(void) {
   app_message_register_inbox_received(in_received_handler);
-  app_message_register_inbox_dropped(in_dropped_handler);
   app_message_open(app_message_inbox_size_maximum(),
 				   APP_MESSAGE_OUTBOX_SIZE_MINIMUM);
 }
