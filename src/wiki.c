@@ -57,6 +57,7 @@ void select(int index, void *context) {
 	dict_write_end(iter);
 	app_message_outbox_send();
 	window_stack_push(subwindow, true);
+	scroll_layer_set_content_offset(scroll_layer, GPointZero, false);
 }
 
 static void app_message_init(void) {
