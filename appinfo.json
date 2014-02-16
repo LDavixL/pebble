@@ -20,10 +20,30 @@
     "resources": {
         "media": [
             {
+                "type": "png",
+                "name": "HISTORY",
+                "file": "images/history.png"
+            },
+            {
+                "type": "png",
+                "name": "NEWS",
+                "file": "images/news.png"
+            },
+            {
+                "type": "png",
+                "name": "ARTICLE",
+                "file": "images/article.png"
+            },
+            {
+                "type": "png",
+                "name": "TRIVIA",
+                "file": "images/trivia.png"
+            },
+            {
                 "menuIcon": true,
                 "type": "png",
-                "name": "FAVICON",
-                "file": "images/wikipediafav.png"
+                "name": "WIKI",
+                "file": "images/wiki.png"
             }
         ]
     }

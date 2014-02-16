@@ -10,9 +10,9 @@ void select(int index, void *context);
 
 SimpleMenuItem items[] = {
 	{ .callback = select, .title = "Article", },
-	{ .callback = select, .title = "News" },
-	{ .callback = select, .title = "Trivia" },
-	{ .callback = select, .title = "History" },
+	{ .callback = select, .title = "News", },
+	{ .callback = select, .title = "Trivia", },
+	{ .callback = select, .title = "History", },
 };
 
 const SimpleMenuSection sections = {
@@ -99,6 +99,12 @@ static void window_unload(Window *window) {
 }
 
 static void init(void) {
+	
+	items[0].icon = gbitmap_create_with_resource(RESOURCE_ID_ARTICLE);
+	items[1].icon = gbitmap_create_with_resource(RESOURCE_ID_NEWS);
+	items[2].icon = gbitmap_create_with_resource(RESOURCE_ID_TRIVIA);
+	items[3].icon = gbitmap_create_with_resource(RESOURCE_ID_HISTORY);
+	
 	app_message_init();
 	
 	window = window_create();
@@ -113,6 +119,10 @@ static void init(void) {
 }
 
 static void deinit(void) {
+	
+	for (int i = 0; i < 4; ++i)
+		gbitmap_destroy(items[i].icon);
+	
 	window_destroy(subwindow);
 	window_destroy(window);
 }
