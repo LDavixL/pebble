@@ -2,6 +2,7 @@
     "versionLabel": "1.0.0",
     "uuid": "2a3352d5-2d44-437f-9652-98464640aeab",
     "appKeys": {
+        "random": 4,
         "article": 0,
         "trivia": 2,
         "history": 3,
@@ -21,13 +22,19 @@
         "media": [
             {
                 "type": "png",
-                "name": "HISTORY",
-                "file": "images/history.png"
+                "name": "RANDOM",
+                "file": "images/random.png"
+            },
+            {
+                "menuIcon": true,
+                "type": "png",
+                "name": "WIKI",
+                "file": "images/wiki.png"
             },
             {
                 "type": "png",
-                "name": "NEWS",
-                "file": "images/news.png"
+                "name": "TRIVIA",
+                "file": "images/trivia.png"
             },
             {
                 "type": "png",
@@ -36,14 +43,13 @@
             },
             {
                 "type": "png",
-                "name": "TRIVIA",
-                "file": "images/trivia.png"
+                "name": "NEWS",
+                "file": "images/news.png"
             },
             {
-                "menuIcon": true,
                 "type": "png",
-                "name": "WIKI",
-                "file": "images/wiki.png"
+                "name": "HISTORY",
+                "file": "images/history.png"
             }
         ]
     }

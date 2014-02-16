@@ -13,11 +13,12 @@ SimpleMenuItem items[] = {
 	{ .callback = select, .title = "News", },
 	{ .callback = select, .title = "Trivia", },
 	{ .callback = select, .title = "History", },
+	{ .callback = select, .title = "Random", },
 };
 
 const SimpleMenuSection sections = {
 	.items = items,
-	.num_items = 4,
+	.num_items = 5,
 };
 
 int8_t wiki = 0x0;
@@ -27,6 +28,7 @@ char *titles[] = {
 	"In the News",
 	"Did You Know...",
 	"On this Day...",
+	"Random Article",
 };
 
 enum {
@@ -34,6 +36,7 @@ enum {
 	WIKI_KEY_NEWS = 0x1,
 	WIKI_KEY_KNOW = 0x2,
 	WIKI_KEY_DAY = 0x3,
+	WIKI_KEY_RANDOM = 0x4,
 };
 
 static void in_received_handler(DictionaryIterator *iter, void *context) {
@@ -101,6 +104,7 @@ static void init(void) {
 	items[1].icon = gbitmap_create_with_resource(RESOURCE_ID_NEWS);
 	items[2].icon = gbitmap_create_with_resource(RESOURCE_ID_TRIVIA);
 	items[3].icon = gbitmap_create_with_resource(RESOURCE_ID_HISTORY);
+	items[4].icon = gbitmap_create_with_resource(RESOURCE_ID_RANDOM);
 	
 	app_message_init();
 	
@@ -117,7 +121,7 @@ static void init(void) {
 
 static void deinit(void) {
 	
-	for (int i = 0; i < 4; ++i)
+	for (int i = 0; i < 5; ++i)
 		gbitmap_destroy(items[i].icon);
 	
 	window_destroy(subwindow);
