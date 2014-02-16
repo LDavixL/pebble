@@ -41,7 +41,7 @@ static void in_received_handler(DictionaryIterator *iter, void *context) {
 	text_layer_set_text(title_layer, titles[section_tuple->key]);
 	text_layer_set_text(section_layer, section_tuple->value->cstring);
 	int16_t h = text_layer_get_content_size(section_layer).h;
-	scroll_layer_set_content_size(scroll_layer, GSize(144, 22 + h));
+	scroll_layer_set_content_size(scroll_layer, GSize(144, 24 + h));
 }
 
 void select(int index, void *context) {
