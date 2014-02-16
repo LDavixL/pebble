@@ -54,6 +54,7 @@ void select(int index, void *context) {
 	window_stack_push(subwindow, true);
 	scroll_layer_set_content_offset(scroll_layer, GPointZero, false);
 	text_layer_set_text(title_layer, "Loading...");
+	text_layer_set_text(section_layer, "");
 	app_message_outbox_send();
 }
 
