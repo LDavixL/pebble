@@ -1,6 +1,6 @@
 function fetchWiki(key) {
 	var req = new XMLHttpRequest();
-	req.open('GET', "http://en.wikipedia.org/wiki/Main_Page&mobileaction=toggle_view_desktop", true);
+	req.open('GET', "http://en.wikipedia.org/w/index.php?title=Main%20Page&mobileaction=toggle_view_desktop", true);
 	req.onload = function(e) {
 		if (req.readyState == 4) {
 			if(req.status == 200) {
